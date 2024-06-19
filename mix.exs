@@ -45,13 +45,13 @@ defmodule Commanded.Middleware.Auditing.Mixfile do
 
   defp deps do
     [
-      {:commanded, "~> 1.0", runtime: false},
-      {:ecto, "~> 3.3"},
-      {:ecto_sql, "~> 3.3"},
+      {:commanded, "~> 1.4", runtime: false},
+      {:ecto, "~> 3.11"},
+      {:ecto_sql, "~> 3.11"},
       {:elixir_uuid, "~> 1.2"},
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:jason, "~> 1.1"},
-      {:postgrex, "~> 0.15"}
+      {:jason, "~> 1.2"},
+      {:postgrex, ">= 0.0.0"}
     ]
   end
 
