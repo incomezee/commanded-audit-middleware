@@ -48,7 +48,6 @@ defmodule Commanded.Middleware.Auditing.Mixfile do
       {:commanded, "~> 1.4", runtime: false},
       {:ecto, "~> 3.11"},
       {:ecto_sql, "~> 3.11"},
-      {:elixir_uuid, "~> 1.2"},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:jason, "~> 1.2"},
       {:postgrex, ">= 0.0.0"}

@@ -94,8 +94,8 @@ defmodule Commanded.Middleware.AuditingTest do
   defp execute_before_dispatch(_context) do
     pipeline =
       %Pipeline{
-        causation_id: UUID.uuid4(),
-        correlation_id: UUID.uuid4(),
+        causation_id: Ecto.UUID.generate(),
+        correlation_id: Ecto.UUID.generate(),
         command: %Command{
           name: "Ben",
           age: 34,
@@ -103,7 +103,7 @@ defmodule Commanded.Middleware.AuditingTest do
           password_confirmation: 1234,
           secret: "I'm superdupersecret!"
         },
-        command_uuid: UUID.uuid4(),
+        command_uuid: Ecto.UUID.generate(),
         metadata: %{user: "user@example.com"}
       }
       |> Auditing.before_dispatch()
