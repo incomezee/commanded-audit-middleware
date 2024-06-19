@@ -25,16 +25,17 @@ defmodule Commanded.Middleware.AuditingTest do
       assert audit.correlation_id == pipeline.correlation_id
       assert audit.command_uuid == pipeline.command_uuid
 
-      assert audit.data in [
-               "{\"age\":34,\"name\":\"Ben\",\"password\":\"[FILTERED]\",\"password_confirmation\":\"[FILTERED]\",\"secret\":\"[FILTERED]\"}",
-               %{
-                 "age" => 34,
-                 "name" => "Ben",
-                 "password" => "[FILTERED]",
-                 "password_confirmation" => "[FILTERED]",
-                 "secret" => "[FILTERED]"
-               }
-             ]
+      expected_data =
+        %{
+          "age" => 34,
+          "name" => "Ben",
+          "password" => "[FILTERED]",
+          "password_confirmation" => "[FILTERED]",
+          "secret" => "[FILTERED]"
+        }
+
+      data = (is_binary(audit.data) && Jason.decode!(audit.data)) || audit.data
+      assert data == expected_data
 
       assert audit.metadata in [
                "{\"user\":\"user@example.com\"}",
